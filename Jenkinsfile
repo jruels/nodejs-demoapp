@@ -6,7 +6,7 @@ stages {
   steps {
    git branch: 'master',
     credentialsId: 'gitlab_user_pass',
-    url: 'http://64.227.109.36:10080/root/test-project.git'
+    url: 'http://64.227.109.36:10080/root/nodejs-demoapp.git'
   }
  }
    stage('Code Quality Check via SonarQube') {
@@ -15,7 +15,7 @@ stages {
        def scannerHome = tool 'sonarqube';
            withSonarQubeEnv("sonarqube-container") {
            sh "${tool("sonarqube")}/bin/sonar-scanner \
-           -Dsonar.projectKey=test-node-js \
+           -Dsonar.projectKey=gitlab_node-js-demoapp \
            -Dsonar.sources=. \
            -Dsonar.css.node=. \
            -Dsonar.host.url=http://64.227.109.36:9000 \
